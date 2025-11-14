@@ -1,0 +1,27 @@
+{
+  "serviceId": "6917002998dd8e96afc0c4d3",
+  "customer": {
+    "name": "Test Customer",
+    "email": "test@example.com",
+    "phone": "9876543210"
+  },
+  "serviceAddress": {
+    "addressLine1": "123 Test Street",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "pincode": "400001"
+  },
+  "scheduledDate": "2025-11-20",
+  "timeSlot": {
+    "start": "09:00",
+    "end": "12:00"
+  },
+  "serviceDetails": {
+    "description": "Test booking"
+  },
+  "pricing": {
+    "serviceCharge": 299,
+    "total": 299
+  },
+  "source": "Website"
+}

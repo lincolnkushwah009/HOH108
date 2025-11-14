@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font Face Declarations */
+@font-face {
+  font-family: 'The Season';
+  src: url('./assets/fonts/TheSeason.woff2') format('woff2'),
+       url('./assets/fonts/TheSeason.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nexa Bold';
+  src: url('./assets/fonts/NexaBold.woff2') format('woff2'),
+       url('./assets/fonts/NexaBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nexa Light';
+  src: url('./assets/fonts/NexaLight.woff2') format('woff2'),
+       url('./assets/fonts/NexaLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Base Styles */
+body {
+  margin: 0;
+  font-family: 'Nexa Light', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

@@ -1,131 +1,207 @@
-# HOH108 Provider App
+# HOH108 - Multi-Service Platform
 
-A React Native mobile application for service providers to manage their bookings, track earnings, and handle customer requests.
-
-## Features
-
-- 📱 Cross-platform (iOS, Android, Web)
-- 🔐 Phone number authentication
-- 📊 Dashboard with booking overview
-- 📋 Booking management with status updates
-- 🔢 OTP-based service completion
-- 💰 Earnings tracking
-- 🎨 Modern UI with smooth animations
-
-## Quick Start
-
-### Development
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm start
-
-# Run on specific platform
-npm run web      # Web browser
-npm run android  # Android device/emulator
-npm run ios      # iOS device/simulator
-```
-
-### Building APK
-
-**Easiest Method:**
-```bash
-npm run build:apk
-```
-
-**Or manually:**
-```bash
-./build-apk.sh
-```
-
-See [BUILD_INSTRUCTIONS.md](./BUILD_INSTRUCTIONS.md) for detailed build instructions.
-
-## Available Scripts
-
-- `npm start` - Start Expo development server
-- `npm run web` - Run in web browser
-- `npm run android` - Run on Android
-- `npm run ios` - Run on iOS
-- `npm run build:apk` - Build Android APK (automated script)
-- `npm run build:preview` - Build preview APK
-- `npm run build:production` - Build production APK
-- `npm run build:web` - Build for web deployment
-- `npm run download:apk` - Download latest built APK
+A complete multi-service platform built with React Native (Provider App), React (Customer Web App), and Node.js (Backend API).
 
 ## Project Structure
 
 ```
-HOH108_Provider_App/
-├── src/
-│   ├── screens/          # App screens
-│   │   ├── LoginScreen.js
-│   │   ├── DashboardScreen.js
-│   │   ├── BookingDetailScreen.js
-│   │   └── EarningsScreen.js
-│   ├── navigation/       # Navigation configuration
-│   ├── services/         # API services
-│   └── config/           # App configuration
-├── assets/               # Images, icons, fonts
-├── dist/                 # Build output (generated)
-├── app.json              # Expo configuration
-├── eas.json              # EAS Build configuration
-├── package.json          # Dependencies
-├── build-apk.sh          # APK build script
-└── BUILD_INSTRUCTIONS.md # Detailed build guide
+HOH108/
+├── provider-app/        # React Native Provider Mobile App
+├── frontend/            # React Customer Web Application
+├── backend/             # Node.js Backend API
+└── docs/                # Documentation files
 ```
 
-## API Configuration
+## Applications
 
-The app connects to the backend API at:
-- **Development:** `http://localhost:8000`
-- **Production:** Update `API_URL` in `src/config/api.js`
+### 1. Provider App (React Native)
+Mobile application for service providers to manage bookings and services.
 
-## Authentication
+**Features:**
+- Stunning purple gradient UI with smooth animations
+- OTP-based job completion verification
+- Real-time booking management
+- Progress timeline visualization
+- Customer details and navigation
 
-Login credentials for testing:
-- **Phone:** 9876543210
-- **Password:** password123
+**Tech Stack:**
+- React Native + Expo
+- React Navigation
+- Centralized theme system
+- Async Storage for authentication
 
-## Build Artifacts
+[Provider App Documentation](./provider-app/README.md)
 
-After building, you'll find:
-- **Web Build:** `dist/` folder (892 KB)
-- **APK:** Download from Expo dashboard or via `npm run download:apk`
+### 2. Customer Web App (React + Vite)
+Web application for customers to browse services and make bookings.
 
-## Requirements
+**Features:**
+- Modern responsive UI
+- Service browsing and booking
+- Real-time booking status
+- Payment integration
+- User authentication
 
+**Tech Stack:**
+- React 18
+- Vite
+- Tailwind CSS
+- React Router
+
+[Frontend Documentation](./frontend/README.md)
+
+### 3. Backend API (Node.js + Express)
+RESTful API server handling all business logic and data management.
+
+**Features:**
+- User authentication (JWT)
+- Booking management
+- Service provider management
+- Payment processing
+- Email notifications
+- File uploads
+
+**Tech Stack:**
+- Node.js + Express
+- MongoDB
+- JWT authentication
+- Multer for uploads
+- Nodemailer for emails
+
+[Backend Documentation](./backend/README.md)
+
+## Quick Start
+
+### Prerequisites
 - Node.js 16+
+- MongoDB
+- Expo CLI (for provider app)
 - npm or yarn
-- Expo CLI (installed automatically)
-- Expo account (for building APKs)
 
-## Tech Stack
+### Installation
 
-- **Framework:** React Native + Expo
-- **Navigation:** React Navigation
-- **State Management:** React Hooks + AsyncStorage
-- **HTTP Client:** Axios
-- **UI:** Custom components with React Native
+1. **Clone the repository**
+```bash
+git clone https://github.com/lincolnkushwah009/HOH108.git
+cd HOH108
+```
+
+2. **Setup Backend**
+```bash
+cd backend
+npm install
+# Configure .env file
+npm start
+```
+
+3. **Setup Frontend**
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+4. **Setup Provider App**
+```bash
+cd provider-app
+npm install
+expo start
+```
 
 ## Documentation
 
-- [Build Instructions](./BUILD_INSTRUCTIONS.md) - Detailed APK build guide
-- [Expo Docs](https://docs.expo.dev/) - Expo framework documentation
+- [Implementation Guide](./IMPLEMENTATION_GUIDE.md)
+- [Multi-Service Platform Guide](./MULTI_SERVICE_PLATFORM_GUIDE.md)
+- [Production Deployment Guide](./PRODUCTION_DEPLOYMENT_GUIDE.md)
+- [Provider App Build Instructions](./provider-app/BUILD_INSTRUCTIONS.md)
 
-## Support
+## Environment Variables
 
-For issues or questions:
-- Check [BUILD_INSTRUCTIONS.md](./BUILD_INSTRUCTIONS.md)
-- Review Expo documentation
-- Contact the development team
+Each application requires its own environment configuration:
 
-## Version
+**Backend (.env)**
+```
+PORT=8000
+MONGODB_URI=mongodb://localhost:27017/hoh108
+JWT_SECRET=your_jwt_secret
+EMAIL_USER=your_email
+EMAIL_PASS=your_password
+```
 
-**Current Version:** 1.0.0
+**Frontend (.env)**
+```
+VITE_API_URL=http://localhost:8000/api
+```
+
+**Provider App**
+Update API URL in `provider-app/src/config/api.js`
+
+## API Endpoints
+
+### Authentication
+- `POST /api/auth/login` - User login
+- `POST /api/auth/register` - User registration
+- `POST /api/provider/login` - Provider login
+
+### Bookings
+- `GET /api/bookings` - Get all bookings
+- `GET /api/bookings/:id` - Get booking details
+- `POST /api/bookings` - Create booking
+- `PUT /api/bookings/:id` - Update booking
+- `PUT /api/bookings/:id/status` - Update booking status
+
+### Services
+- `GET /api/services` - Get all services
+- `GET /api/services/:id` - Get service details
+- `POST /api/services` - Create service (admin)
+
+## Development
+
+### Running Tests
+```bash
+# Backend tests
+cd backend && npm test
+
+# Frontend tests
+cd frontend && npm test
+
+# Provider app tests
+cd provider-app && npm test
+```
+
+### Build for Production
+
+**Backend**
+```bash
+cd backend && npm start
+```
+
+**Frontend**
+```bash
+cd frontend && npm run build
+```
+
+**Provider App**
+```bash
+cd provider-app && npm run build:apk
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## License
 
-Proprietary - HOH108 Platform
+This project is proprietary software. All rights reserved.
+
+## Support
+
+For support, email support@hoh108.com or open an issue in the repository.
+
+---
+
+Built with by HOH108 Team

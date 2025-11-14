@@ -2,12 +2,21 @@
 
 # dependencies
 node_modules/
+*/node_modules/
+**/node_modules/
 
-# Expo
+# Expo (Provider App)
 .expo/
+provider-app/.expo/
+provider-app/dist/
+provider-app/web-build/
+provider-app/expo-env.d.ts
+
+# Build outputs
 dist/
-web-build/
-expo-env.d.ts
+*/dist/
+build/
+*/build/
 
 # Native
 .kotlin/
@@ -31,7 +40,10 @@ yarn-error.*
 *.pem
 
 # local env files
+.env
 .env*.local
+*/.env
+*/.env.local
 
 # typescript
 *.tsbuildinfo
@@ -39,3 +51,12 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+provider-app/android/
+provider-app/ios/
+
+# Backend uploads
+backend/uploads/
+
+# Frontend dist
+frontend/dist/
+frontend/dist.zip
